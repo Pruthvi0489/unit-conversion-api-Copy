@@ -17,8 +17,10 @@ var app = builder.Build();
 
 app.UseExceptionHandler();
 
-// Swagger stays on in every environment so the API is easy to try out locally.
-app.UseSwaggerDocumentation();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwaggerDocumentation();
+}
 
 app.MapControllers();
 
